@@ -25,16 +25,6 @@ class Seg47 {
 		
 		void showNro(int);
 		void getNro(int);
-		void binNro0();
-		void binNro1();
-		void binNro2();
-		void binNro3();
-		void binNro4();
-		void binNro5();
-		void binNro6();
-		void binNro7();
-		void binNro8();
-		void binNro9();
 	
 	//Yksityinen tieto
 	private:

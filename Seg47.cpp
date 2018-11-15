@@ -61,94 +61,11 @@ void Seg47::showNro(int numero) {
 }
 
 void Seg47::getNro(int numero) {
-	if		(numero == 0) { binNro0(); } // Näytetään numero 0
-	else if	(numero == 1) { binNro1(); } // Näytetään numero 1
-	else if	(numero == 2) { binNro2(); } // Näytetään numero 2
-	else if	(numero == 3) { binNro3(); } // Näytetään numero 3
-	else if	(numero == 4) { binNro4(); } // Näytetään numero 4
-	else if	(numero == 5) { binNro5(); } // Näytetään numero 5
-	else if	(numero == 6) { binNro6(); } // Näytetään numero 6
-	else if	(numero == 7) { binNro7(); } // Näytetään numero 7
-	else if	(numero == 8) { binNro8(); } // Näytetään numero 8
-	else if	(numero == 9) { binNro9(); } // Näytetään numero 9
-}
-
-// Numero 0
-void Seg47::binNro0() {
-	digitalWrite(_segBitti1, segLed_Off);
-	digitalWrite(_segBitti2, segLed_Off);
-	digitalWrite(_segBitti3, segLed_Off);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 1
-void Seg47::binNro1() {
-	digitalWrite(_segBitti1, segLed_On);
-	digitalWrite(_segBitti2, segLed_Off);
-	digitalWrite(_segBitti3, segLed_Off);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 2
-void Seg47::binNro2() {
-	digitalWrite(_segBitti1, segLed_Off);
-	digitalWrite(_segBitti2, segLed_On);
-	digitalWrite(_segBitti3, segLed_Off);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 3
-void Seg47::binNro3() {
-	digitalWrite(_segBitti1, segLed_On);
-	digitalWrite(_segBitti2, segLed_On);
-	digitalWrite(_segBitti3, segLed_Off);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 4
-void Seg47::binNro4() {
-	digitalWrite(_segBitti1, segLed_Off);
-	digitalWrite(_segBitti2, segLed_Off);
-	digitalWrite(_segBitti3, segLed_On);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 5
-void Seg47::binNro5() {
-	digitalWrite(_segBitti1, segLed_On);
-	digitalWrite(_segBitti2, segLed_Off);
-	digitalWrite(_segBitti3, segLed_On);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 6
-void Seg47::binNro6() {
-	digitalWrite(_segBitti1, segLed_Off);
-	digitalWrite(_segBitti2, segLed_On);
-	digitalWrite(_segBitti3, segLed_On);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 7
-void Seg47::binNro7() {
-	digitalWrite(_segBitti1, segLed_On);
-	digitalWrite(_segBitti2, segLed_On);
-	digitalWrite(_segBitti3, segLed_On);
-	digitalWrite(_segBitti4, segLed_Off);
-}
-
-// Numero 8
-void Seg47::binNro8() {
-	digitalWrite(_segBitti1, segLed_Off);
-	digitalWrite(_segBitti2, segLed_Off);
-	digitalWrite(_segBitti3, segLed_Off);
-	digitalWrite(_segBitti4, segLed_On);
-}
-
-// Numero 9
-void Seg47::binNro9() {
-	digitalWrite(_segBitti1, segLed_On);
-	digitalWrite(_segBitti2, segLed_Off);
-	digitalWrite(_segBitti3, segLed_Off);
-	digitalWrite(_segBitti4, segLed_On);
+  digitalWrite(_segBitti4, numero & 1); // esim 4 & 1 => 0100 & 0001 > 0
+  numero = numero >> 1;                 // 0100 >> 1 => 0100 > 0010
+  digitalWrite(_segBitti3, numero & 1); // 0010 & 0001 > 0
+  numero = numero >> 1;                 // 0010 => 0001  
+  digitalWrite(_segBitti2, numero & 1); // 0001 & 0001 => 1
+  numero = numero >> 1;                 // 0001 => 0000
+  digitalWrite(_segBitti1, numero & 1); // 0000 & 0001 => 0 
 }
