@@ -61,11 +61,11 @@ void Seg47::showNro(int numero) {
 }
 
 void Seg47::getNro(int numero) {
-  digitalWrite(_segBitti4, numero & 1); // esim 4 & 1 => 0100 & 0001 > 0
+  digitalWrite(_segBitti1, numero & 1); // esim 4 & 1 => 0100 & 0001 > 0
   numero = numero >> 1;                 // 0100 >> 1 => 0100 > 0010
-  digitalWrite(_segBitti3, numero & 1); // 0010 & 0001 > 0
+  digitalWrite(_segBitti2, numero & 1); // 0010 & 0001 > 0
   numero = numero >> 1;                 // 0010 => 0001  
-  digitalWrite(_segBitti2, numero & 1); // 0001 & 0001 => 1
+  digitalWrite(_segBitti3, numero & 1); // 0001 & 0001 => 1
   numero = numero >> 1;                 // 0001 => 0000
-  digitalWrite(_segBitti1, numero & 1); // 0000 & 0001 => 0 
+  digitalWrite(_segBitti4, numero & 1); // 0000 & 0001 => 0 
 }
