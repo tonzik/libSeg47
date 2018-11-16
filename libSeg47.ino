@@ -10,8 +10,10 @@
 //        12, = B (A1 74LS47N ohjain)
 //        11, = C (A2 74LS47N ohjain)
 //        10, = D (A3 74LS47N ohjain)
+//		   1, = Näytön 'virkistystaajuus', kokeile sopivaa arvoa näytöllesi väliltä 1-10.
+//		   5, = Ajastinpisteen käyttöönotto antamalla pinnin numero. Jos ei haluta käyttöön käytetään lukua -1.
 //
-Seg47 disp(9,8, 7, 6, 13, 12, 11, 10);
+Seg47 disp(9,8, 7, 6, 13, 12, 11, 10, 1, 5);
 
 int DSP = 1234;
 

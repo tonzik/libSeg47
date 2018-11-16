@@ -9,18 +9,21 @@ Seg47.cpp - Kirjasto 4-osaisen segmenttinäytön (common anode) ohjaamiseen käy
 Täällä alustetaan kaikki toiminnot.
 */
 
-Seg47::Seg47(int segVirta1, int segVirta2, int segVirta3, int segVirta4, int segBitti1, int segBitti2, int segBitti3, int segBitti4) {
+Seg47::Seg47(int segVirta1, int segVirta2, int segVirta3, int segVirta4, int segBitti1, int segBitti2, int segBitti3, int segBitti4, int segViive, int segAikaPistePin) {
 	
-	_segVirta1 = segVirta1;
-	_segVirta2 = segVirta2;
-	_segVirta3 = segVirta3;
-	_segVirta4 = segVirta4;
-	_segBitti1 = segBitti1;
-	_segBitti2 = segBitti2;
-	_segBitti3 = segBitti3;
-	_segBitti4 = segBitti4;
-	
+	_segVirta1       = segVirta1;
+	_segVirta2       = segVirta2;
+	_segVirta3       = segVirta3;
+	_segVirta4       = segVirta4;
+	_segBitti1       = segBitti1;
+	_segBitti2       = segBitti2;
+	_segBitti3       = segBitti3;
+	_segBitti4       = segBitti4;
+	_segViive        = segViive;
+	_segAikaPistePin = segAikaPistePin;
+
 	// Tuttuun tapaan määritetään pinni lähdöksi
+
 	pinMode(_segVirta1, OUTPUT);
 	pinMode(_segVirta2, OUTPUT);
 	pinMode(_segVirta3, OUTPUT);
@@ -29,6 +32,10 @@ Seg47::Seg47(int segVirta1, int segVirta2, int segVirta3, int segVirta4, int seg
 	pinMode(_segBitti2, OUTPUT);
 	pinMode(_segBitti3, OUTPUT);
 	pinMode(_segBitti4, OUTPUT);
+
+	if (segAikaPistePin != -1) { // Jos ajastinpiste on käytössä, määritetään tämän pinni lähdöksi.
+		pinMode(_segAikaPistePin, OUTPUT);
+	}
 }
 
 void Seg47::showNro(int numero) {
@@ -40,22 +47,28 @@ void Seg47::showNro(int numero) {
 	//Näytetään numero segmenttinäytöllä, sytyttäen ja sammuttaen segmenttiosioita vuorotellen
 	digitalWrite(_segVirta4, HIGH);
 	getNro(segOsa4);
-	delay(segViive);
+	delay(_segViive);
 	
 	digitalWrite(_segVirta4, LOW);
 	digitalWrite(_segVirta3, HIGH);
 	getNro(segOsa3);
-	delay(segViive);
+	delay(_segViive);
 	
 	digitalWrite(_segVirta3, LOW);
 	digitalWrite(_segVirta2, HIGH);
+	if (_segAikaPistePin != -1) {
+		digitalWrite(_segAikaPistePin, LOW); // Jos aikapiste on käytössä laitetaan se tässä päälle
+	}
 	getNro(segOsa2);
-	delay(segViive);
+	delay(_segViive);
 	
 	digitalWrite(_segVirta2, LOW);
+	if (_segAikaPistePin != -1) {
+		digitalWrite(_segAikaPistePin, HIGH); // Jos aikapiste on käytössä laitetaan se tässä pois päältä
+	}
 	digitalWrite(_segVirta1, HIGH);
 	getNro(segOsa1);
-	delay(segViive);
+	delay(_segViive);
 	
 	digitalWrite(_segVirta1, LOW);
 }
