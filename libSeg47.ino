@@ -1,4 +1,4 @@
-#include "Seg47.h"
+#include "libSeg47.h"
 
 // Annetaan 4-osaisen näytön pinnitiedot, yhteensä 8. Muuta oman kytkentäsi mukaisesti, pinnien järjestys oltava kuitenkin sama)
 // Seuraavana esimerkkiohjelman pinnien selitys
@@ -13,7 +13,7 @@
 //		   1, = Näytön 'virkistystaajuus', kokeile sopivaa arvoa näytöllesi väliltä 1-10.
 //		   5, = Ajastinpisteen käyttöönotto antamalla pinnin numero. Jos ei haluta käyttöön käytetään lukua -1.
 //
-Seg47 disp(9,8, 7, 6, 13, 12, 11, 10, 1, 5);
+libSeg47 disp(9,8, 7, 6, 13, 12, 11, 10, 1, 5);
 
 int DSP = 1234;
 

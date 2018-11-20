@@ -2,8 +2,8 @@
 Seg47.h - Kirjasto 4-osaisen segmenttinäytön (common anode) ohjaamiseen käyttäen SN74LS47N-piiriä.
 */
 
-#ifndef Seg47_h
-#define Seg47_h
+#ifndef libSeg47_h
+#define libSeg47_h
 
 #include "Arduino.h"
 
@@ -17,12 +17,12 @@ Luodaan luokka joka muodostuu metodeista näytön käsittelyä varten,
 sekä muuttujuat joita tarvitaan
 */
 
-class Seg47 {
+class libSeg47 {
 	// Julkinen tieto
 	public:
 		
 		// Konstruktori joka liittää metodit valituille tuloille
-		Seg47(int, int, int, int, int, int, int, int, int, int);
+		libSeg47(int, int, int, int, int, int, int, int, int, int);
 		
 		void showNro(int);
 		void getNro(int);

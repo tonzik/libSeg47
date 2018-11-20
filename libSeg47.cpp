@@ -3,13 +3,13 @@ Seg47.cpp - Kirjasto 4-osaisen segmenttinäytön (common anode) ohjaamiseen käy
 */
 
 #include "Arduino.h"
-#include "Seg47.h"
+#include "libSeg47.h"
 
 /*Konstruktori - Funktio joka luo uuden ilmentymän Seg47-luokasta.
 Täällä alustetaan kaikki toiminnot.
 */
 
-Seg47::Seg47(int segVirta1, int segVirta2, int segVirta3, int segVirta4, int segBitti1, int segBitti2, int segBitti3, int segBitti4, int segViive, int segAikaPistePin) {
+libSeg47::libSeg47(int segVirta1, int segVirta2, int segVirta3, int segVirta4, int segBitti1, int segBitti2, int segBitti3, int segBitti4, int segViive, int segAikaPistePin) {
 	
 	_segVirta1       = segVirta1;
 	_segVirta2       = segVirta2;
@@ -38,7 +38,7 @@ Seg47::Seg47(int segVirta1, int segVirta2, int segVirta3, int segVirta4, int seg
 	}
 }
 
-void Seg47::showNro(int numero) {
+void libSeg47::showNro(int numero) {
 	int segOsa1 = ((numero / 1000) % 10);
 	int segOsa2 = ((numero /  100) % 10);
 	int segOsa3 = ((numero /   10) % 10);
@@ -73,7 +73,7 @@ void Seg47::showNro(int numero) {
 	digitalWrite(_segVirta1, LOW);
 }
 
-void Seg47::getNro(int numero) {
+void libSeg47::getNro(int numero) {
   digitalWrite(_segBitti1, numero & 1); // esim 4 & 1 => 0100 & 0001 > 0
   numero = numero >> 1;                 // 0100 >> 1 => 0100 > 0010
   digitalWrite(_segBitti2, numero & 1); // 0010 & 0001 > 0
