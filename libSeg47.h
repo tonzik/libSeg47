@@ -5,7 +5,7 @@ Seg47.h - Kirjasto 4-osaisen segmenttinäytön (common anode) ohjaamiseen käytt
 #ifndef libSeg47_h
 #define libSeg47_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 const int segLed_On = HIGH;
 const int segLed_Off = LOW;
