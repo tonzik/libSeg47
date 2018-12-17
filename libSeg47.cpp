@@ -2,7 +2,7 @@
 Seg47.cpp - Kirjasto 4-osaisen segmenttinäytön (common anode) ohjaamiseen käyttäen SN74LS47N-piiriä.
 */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "libSeg47.h"
 
 /*Konstruktori - Funktio joka luo uuden ilmentymän Seg47-luokasta.
